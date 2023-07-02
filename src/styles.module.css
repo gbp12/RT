@@ -1,0 +1,161 @@
+.main {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  display: flex;
+}
+.header {
+  width: 80px;
+  height: 100vh;
+  background-color: #213555;
+  color: F5EFE7;
+  position: fixed;
+  margin-left: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-around;
+}
+.headerLogo {
+  font-size: 40px;
+}
+.modal {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #f5efe7;
+}
+
+.modalContent {
+  background-color: #213555;
+  border-radius: 4px;
+  width: 500px;
+}
+
+.modal h2 {
+  margin-top: 0;
+}
+
+.modal button {
+  background-color: #4f709c;
+  color: #f5efe7;
+  border: none;
+  padding: 8px 16px;
+  border-radius: 4px;
+  cursor: pointer;
+  margin-right: 15px;
+  margin-bottom: 15px;
+}
+
+.modal button:hover {
+  background-color: #2e4c74;
+}
+.newTweetForm {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: end;
+  justify-content: center;
+}
+.newTweetForm textarea {
+  width: 484px;
+  height: 100px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  resize: none;
+  margin-bottom: 8px;
+  background-color: #213555;
+}
+.newTweetForm textarea:focus {
+  outline: none;
+}
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-left: 35%;
+  margin-top: 20px;
+}
+.tweet {
+  width: 500px;
+  background-color: #213555;
+  color: #f5efe7;
+  max-width: 400px;
+  border-radius: 4px;
+  padding: 8px;
+  margin-bottom: 8px;
+}
+.tweetButton {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+}
+.loadTweets {
+  text-decoration: underline;
+  cursor: pointer;
+}
+.header nav {
+  display: flex;
+  flex-direction: column;
+  align-items: start;
+  justify-content: space-around;
+  width: 100%;
+}
+.header nav div {
+  margin: 10px 0px;
+  cursor: pointer;
+  transition: all 0.2s ease-in-out;
+  width: 100%;
+  text-align: center;
+  padding: 5px 0px;
+}
+.header nav div:hover {
+  background-color: #2e4c74;
+  border-radius: 4px;
+}
+
+.userName {
+  font-size: 14px;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.tweetText {
+  font-size: 14px;
+  margin: 10px;
+}
+.profileContainer {
+  width: 100vw;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  margin-top: 20px;
+}
+.userForm {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 200px;
+  justify-content: space-around;
+}
+.userInput {
+  width: 300px;
+  height: 30px;
+  border: none;
+  border-radius: 4px;
+  padding: 8px;
+  resize: none;
+  margin-bottom: 8px;
+  background-color: #213555;
+  font-size: larger;
+}

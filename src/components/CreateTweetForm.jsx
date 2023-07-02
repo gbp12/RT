@@ -71,7 +71,7 @@ export const CreateTweetForm = () => {
         onSubmit={(e) => login(e)}
       >
         <h3>Login</h3>
-        <label>email</label>
+        <label>user</label>
         <input type="text" name="username" />
         <label>password</label>
         <input type="text" name="password" />
