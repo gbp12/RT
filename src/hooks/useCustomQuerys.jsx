@@ -1,5 +1,7 @@
 import { useQuery, useMutation, useQueryClient } from "react-query";
 import axios from "axios";
+
+// FIXME: 👎 esto no es un hook, es ua funcion
 export const useCustomFetch = (key, url) => {
   const getData = async () => {
     console.log("fetching data en esta url:", url);

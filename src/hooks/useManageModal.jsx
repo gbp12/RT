@@ -1,5 +1,6 @@
 import { useEffect, useState } from "react";
 
+// ✅ nice hook boy
 const useManageModal = () => {
   const [isOpen, setIsOpen] = useState(false);
 
