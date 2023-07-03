@@ -1,13 +1,10 @@
 import React from "react";
 import styles from "../../styles.module.css";
 import { Outlet, Link } from "react-router-dom";
-
+import useLogOut from "../../hooks/useLogOut";
 const SidebarContainer = () => {
-  /* FIXME: modularizar esta funcion */
   const clearJwt = () => {
-    console.log("clearing jwt");
-    localStorage.clear();
-    window.location.replace("/login");
+    useLogOut();
   };
 
   return (

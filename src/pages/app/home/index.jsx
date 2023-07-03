@@ -9,7 +9,7 @@ import { useLocation } from "react-router-dom";
 const Home = () => {
   return (
     <div style={{ width: "100%" }}>
-      <TweetsSection />
+      {/*      <TweetsSection />*/}
       <NewTweet />
     </div>
   );

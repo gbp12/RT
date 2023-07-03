@@ -1,64 +1,40 @@
-import React, { useState, useEffect, useRef } from "react";
 import styles from "../styles.module.css";
-import axios from "axios";
-import { useQueryClient } from "react-query";
+import useManageModal from "../hooks/useManageModal";
+import useCrearTweet from "../hooks/useCrearTweet";
 const NewTweet = () => {
-  const queryClient = useQueryClient();
-  const [isOpen, setIsOpen] = useState(false);
-  const modalRef = useRef(null);
-  /* FIXME: Modularizar esta logica en Custom hook */
-  useEffect(() => {
-    const handleClickOutside = (event) => {
-      if (modalRef.current && !modalRef.current.contains(event.target)) {
-        console.log("cerrar modal");
-        closeModal();
-      }
-    };
-
-    document.addEventListener("mousedown", handleClickOutside);
-
-    return () => {
-      document.removeEventListener("mousedown", handleClickOutside);
-    };
-  }, []);
-
-  const openModal = () => {
-    setIsOpen(true);
-  };
-
-  const closeModal = () => {
-    setIsOpen(false);
-  };
-
-  /* FIXME: Refactorizacion */
+  const modal = useManageModal();
   const crearTweet = async (e) => {
     e.preventDefault();
-    try {
-      await axios.post(
-        "http://localhost:3000/api/v1/tweets/create",
-        { texto: e.target[0].value },
-        {
-          headers: {
-            authorization: `${localStorage.getItem("jtw")}`,
-          },
-        }
-      );
-      queryClient.refetchQueries("allTweets");
-      closeModal();
-    } catch (error) {
-      console.log(error);
-    }
+    const { postResponse, isError } = await useCrearTweet(
+      e.target[0].value,
+      "persona a la que se responde el tweet",
+      modal.closeModal
+    );
   };
   return (
     <>
-      <button className={styles.tweetButton} onClick={openModal}>
+      <button className={styles.tweetButton} onClick={modal.openModal}>
         Twitear
       </button>
 
-      {isOpen && (
+      {modal.isOpen && (
         <div className={styles.modal}>
-          <div className={styles.modalContent} ref={modalRef}>
-            <h2>Tu mierda aqui</h2>
+          <div className={styles.modalContent}>
+            <div
+              style={{
+                width: "100%",
+                display: "flex",
+                justifyContent: "space-between",
+              }}
+            >
+              <h2>Tu mierda aqui </h2>{" "}
+              <h2
+                style={{ cursor: "pointer", marginRight: "10px" }}
+                onClick={modal.closeModal}
+              >
+                X
+              </h2>
+            </div>
             <form
               onSubmit={(e) => crearTweet(e)}
               className={styles.newTweetForm}
