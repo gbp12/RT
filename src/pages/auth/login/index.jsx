@@ -1,21 +1,29 @@
 import React from "react";
 import axios from "axios";
-
+import { useMutation, useQueryClient } from "react-query";
 const Login = () => {
-  /* FIXME: refactor de api */
+  const userManage = useMutation(() => {
+    return { name: "gonzalo", id: 11 };
+  });
+
   const login = async (e) => {
     e.preventDefault();
+    userManage.mutate();
     var body = { username: e.target[0].value, password: e.target[1].value };
-    try {
+
+    /*    try {
       const auth = await axios.post("http://localhost:3000/api/v1/login", body);
       localStorage.setItem("jtw", auth.data.token);
       window.location.replace("/");
     } catch (error) {
       alert("Login failed, try again.");
-    }
+    }*/
   };
 
   /* FIXME: utilizar control de formulario previamente definido */
+  if (userManage.isLoading) {
+    return <h1>Cargando....</h1>;
+  }
   return (
     <main
       style={{

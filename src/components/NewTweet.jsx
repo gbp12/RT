@@ -1,9 +1,7 @@
 import styles from "../styles.module.css";
 import useManageModal from "../hooks/useManageModal";
-import useCreateTweet from "../hooks/useCrearTweet";
 const NewTweet = () => {
   const modal = useManageModal();
-  const { mutate, data, error, status } = useCreateTweet();
 
   const crearTweet = async (e) => {
     e.preventDefault();
