@@ -1,29 +1,25 @@
 import React from "react";
-import axios from "axios";
-import { useMutation, useQueryClient } from "react-query";
+import useStore from "../../../localStorage/useStore";
+import { useNavigate } from "react-router-dom";
 const Login = () => {
-  const userManage = useMutation(() => {
-    return { name: "gonzalo", id: 11 };
-  });
+  const { setUser } = useStore();
+  const navigate = useNavigate();
 
   const login = async (e) => {
     e.preventDefault();
-    userManage.mutate();
-    var body = { username: e.target[0].value, password: e.target[1].value };
-
-    /*    try {
-      const auth = await axios.post("http://localhost:3000/api/v1/login", body);
-      localStorage.setItem("jtw", auth.data.token);
-      window.location.replace("/");
+    try {
+      await setUser({
+        userName: e.target[0].value,
+        password: e.target[1].value,
+      });
+      alert("login exitoso");
+      navigate("/");
     } catch (error) {
-      alert("Login failed, try again.");
-    }*/
+      console.log(error);
+      alert("login fallido");
+    }
   };
 
-  /* FIXME: utilizar control de formulario previamente definido */
-  if (userManage.isLoading) {
-    return <h1>Cargando....</h1>;
-  }
   return (
     <main
       style={{

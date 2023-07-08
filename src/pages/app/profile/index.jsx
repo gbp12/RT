@@ -1,7 +1,6 @@
 import React from "react";
 import { useCustomFetch } from "../../../hooks/useCustomQuerys";
 import styles from "../../../styles.module.css";
-import { Header } from "../../../components/Header";
 import { UserForm } from "../../../components/UserForm";
 
 const Profile = () => {

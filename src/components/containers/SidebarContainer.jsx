@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import styles from "../../styles.module.css";
 import { Outlet, Link } from "react-router-dom";
 import useLogOut from "../../hooks/useLogOut";
