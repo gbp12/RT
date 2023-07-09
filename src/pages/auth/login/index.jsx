@@ -1,24 +1,9 @@
 import React from "react";
-import useStore from "../../../localStorage/useStore";
 import { useNavigate } from "react-router-dom";
+import { useLogin } from "../../../api/auth/useLogin";
 const Login = () => {
-  const { setUser } = useStore();
+  const { mutate } = useLogin();
   const navigate = useNavigate();
-
-  const login = async (e) => {
-    e.preventDefault();
-    try {
-      await setUser({
-        userName: e.target[0].value,
-        password: e.target[1].value,
-      });
-      alert("login exitoso");
-      navigate("/");
-    } catch (error) {
-      console.log(error);
-      alert("login fallido");
-    }
-  };
 
   return (
     <main
@@ -32,7 +17,7 @@ const Login = () => {
     >
       <form
         style={{ display: "flex", flexDirection: "column" }}
-        onSubmit={(e) => login(e)}
+        onSubmit={(e) => mutate(e.target[0], e.target[1])}
       >
         <h3>Login</h3>
         <label>user</label>
